@@ -660,7 +660,7 @@ impl SequenceItemHeader {
                 // item delimiter
                 // delimiters should not have a positive length
                 if len != Length(0) {
-                    UnexpectedDelimiterLength { len }.fail()
+                    UnexpectedDelimiterLengthSnafu { len }.fail()
                 } else {
                     Ok(SequenceItemHeader::ItemDelimiter)
                 }
@@ -669,7 +669,7 @@ impl SequenceItemHeader {
                 // sequence delimiter
                 Ok(SequenceItemHeader::SequenceDelimiter)
             }
-            tag => UnexpectedTag { tag }.fail(),
+            tag => UnexpectedTagSnafu { tag }.fail(),
         }
     }
 }
